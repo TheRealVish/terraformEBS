@@ -18,4 +18,4 @@ terraform.tfstate.backup
 *.tfstate.*
 **/.terraform/*
 .terraform/
-terraform.tfvars
+./terraform.tfvars
