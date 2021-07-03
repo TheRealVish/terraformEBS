@@ -16,12 +16,6 @@ resource "aws_elastic_beanstalk_environment" "tfenvtest" {
     name                = "tf-test-name"
     application         = aws_elastic_beanstalk_application.tftest.name
     solution_stack_name = "64bit Amazon Linux 2 v5.4.1 running Node.js 14"
-    # loadbalancer_type    = "application"
-    # instance_type           = "t3.small"
-    # autoscale_min           = 1
-    # autoscale_max           = 2
-    # updating_min_in_service = 0
-    # updating_max_batch      = 1
 
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
@@ -55,14 +49,14 @@ setting {
 
   setting {
     namespace = "aws:elb:loadbalancer"
-    name      = "loadbalancer"
-    value     = aws_lb.gnenvelb.id
+    name      = "CrossZone"
+    value     = "true"
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBScheme"
-    value     = "internal"
+    value     = "external"
   }
 
 }
